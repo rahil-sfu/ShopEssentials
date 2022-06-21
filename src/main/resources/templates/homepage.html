@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEssentials</title>
+</head>
+<link rel="stylesheet" href="./stylesheets/style1.css">
+
+<body>
+    <p style=" text-align: center;  color: white; font-style: italic; font-size: xx-large; " th:text=" 'Welcome, ' + ${user.getemail()} + ' to ShopEssentials!' "></p>
+    <div class="row">
+   <h1>Happiness is not in Money<br>But in SHOPPING!!!</h1>
+   <p>
+       Stay Home and Shop Essentials<br>You Are too cute to look for a parking spot
+   </p>
+      <a th:href="@{/explore}" class="btn">Explore Now &#8594;</a>
+    </div>
+</body>
+</html>

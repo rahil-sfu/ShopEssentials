@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Securtiy Questions</title>
+</head>
+<style>
+    /* html,body{
+    background-image: url('https://searchengineland.com/figz/wp-content/seloads/2015/02/ecommerce-shopping-cart-keyboard-ss-1920.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+    form {
+        margin-left: 250px;
+    padding: 50px;
+    
+    }
+    body{
+    color: white;
+    } */
+    body {
+        background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+    }
+</style>
+
+<body>
+    <section class="h-100">
+        <div class="container h-100">
+            <div class="row justify-content-sm-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                    <div class="text-center my-5 display-4" style="font-style: italic;">
+                        ShopEssentials
+                    </div>
+
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <h2 class="card-title font-weight-normal">Answer Security Questions</h2>
+                            <form action="#" method="POST" th:action="@{/resetform/{pid}(pid= ${user.getid()})}"
+                                th:object="${user}">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1"></label>
+                                    <p th:text=" Question1 + ' : ' + ${user.getSQ1()}"> </p> 
+                                    <input type="text" class="form-control" th:field=*{ans1} placeholder="Enter your Answer" required> 
+                                </div>
+                                <div class="form-group">
+                                    <p th:text=" Question2 + ' : ' + ${user.getSQ2()}"> </p> 
+                                    <input type="text" class="form-control" th:field=*{ans2} placeholder="Enter your Answer" required> 
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" value="Submit Answers">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        Copyrighted &copy; by ShopEssentials
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

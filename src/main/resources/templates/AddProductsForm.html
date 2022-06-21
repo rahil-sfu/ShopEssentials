@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Add product</title>
+</head>
+
+<body>
+    <div class="mx-auto" style="width:55%; height: 60%; margin: 3% 0% 0% 30%;">
+        <table class="table table-striped table-dark">
+            <thead>
+                <th><h1>Add New Product </h1></th>
+            </thead>
+            <tbody>
+            <form action="#" method="POST" th:action="@{/AddProducts}" th:object="${product}">
+                <tr>
+                <div class="form-group">
+                    <td><label for="exampleInputEmail1">Name of Product</label></td>
+                    <td><input type="text" th:field=*{name} placeholder="ENTER Name"> </td>
+                </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Color of Product</label></td>
+                        
+                        <td><input type="text" th:field=*{color} placeholder="ENTER Color"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Category of Product</label></td>
+                        <td><input type="text" th:field=*{category} placeholder="ENTER Category"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">description of Product</label></td>
+                        <td><input type="text" th:field=*{description} placeholder="ENTER Description"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">link1 of Product</label></td>
+                        <td><input type="url" th:field=*{link1} placeholder="ENTER Link1"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">link2 of Product</label></td>
+                        <td><input type="url" th:field=*{link2} placeholder="ENTER Link2"></td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Author of Product</label></td>
+                        <td><input type="text" th:field=*{author} placeholder="ENTER Author name"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">language of Product</label></td>
+                        <td><input type="text" th:field=*{language} placeholder="ENTER language of Product"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Title of Product</label></td>
+                        
+                        <td><input type="text" th:field=*{title} placeholder="ENTER Title"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Price of Product</label></td>
+                        
+                        <td><input type="text" th:field=*{price} placeholder="ENTER Price"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Pages</label></td>
+                        
+                        <td><input type="text" th:field=*{pages} placeholder="ENTER Pages"> </td>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-group">
+                        <td><label for="exampleInputEmail1">Year</label></td>
+                        
+                        <td><input type="text" th:field=*{year} placeholder="ENTER Year"> </td>
+                    </div>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <div class="form-group">
+                        
+                        <td><input class="btn btn-primary" type="submit" value="Submit Product"></td>
+                    </div>
+                </tr>
+            </tfoot>
+            </form>
+        </table>
+    </div>
+</body>
+
+</html>

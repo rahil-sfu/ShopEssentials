@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>User Database</title>
+</head>
+<body style="background-color:cornsilk;">
+    <div class="w-100 p-3 h-100 d-inline-block">
+        <h1>Users in Database</h1>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Security Question1</th>
+                    <th>Answer</th>
+                    <th>Security Question2</th>
+                    <th>Answer</th>
+                    <th>Login Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${allusers}">
+                    <td th:text="${user.getemail()}"> </td>
+                    <td> <a th:text="${user.getpassword()}"></a> </td>
+                    <td th:text="${user.getSQ1()}"> </td>
+                    <td th:text="${user.getans1()}"></td>
+                    <td th:text="${user.getSQ2()}"></td>
+                    <td th:text="${user.getans2()}"></td>
+                    <td th:text="${user.getStatus()}"></td>
+                    <td> <a th:href="@{/removeuser/{pid}(pid=${user.getid()})}"><button
+                                class="btn btn-danger">REMOVE</button> </a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="@{/logout}"><button class="btn btn-primary my-2 my-sm-0"> LOGOUT </button></a>
+    </div>
+</body>
+
+</html>

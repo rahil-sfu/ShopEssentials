@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Previous Orders</title>
+</head>
+<style>
+    p.detail{
+border-style: ridge;
+    width: 40%;
+    height: 20px;
+    padding-left: 20px;
+    padding-top: 15px;
+    text-align: center;
+    }
+    .main-div{
+      padding-top: 50px;
+      padding-left: 30px;
+      border-radius: 5px;
+  background-color: #f2f2f2;
+      
+}
+</style>
+
+<body>
+    <h2>Past orders</h2>
+     <div th:each="detail : ${details}" class="main-div">
+     
+                <p> FirstName</p>
+                <p class="detail" th:text="${detail.getPerson_detail().getFirstName()}"></p>
+                <p> LastName </p>
+               <p class="detail" th:text="${detail.getPerson_detail().getLastName()}"></p>
+                <p> Email </p>
+                <p class="detail" th:text="${detail.getPerson_detail().getEmail()}"></p>
+                <p> PhoneNumber </p>
+                <p class="detail" th:text="${detail.getPerson_detail().getPhNumber()}"></p>
+        
+                <p> Delivery Address</p>
+        <p class="detail" th:text="${detail.getOrder_detail().getAddress()}"></p>
+        <p> Delivery Time</p>
+        <p class="detail" th:text="${detail.getOrder_detail().getTime()}"></p>
+        <p> Cost </p>
+        <p class="detail" th:text="${detail.getOrder_detail().getTotalCost()}"></p>
+    
+</div> 
+</body>
+
+</html>

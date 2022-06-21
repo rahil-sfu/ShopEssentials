@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Product Databse</title>
+</head>
+
+<body>
+    <div class="w-100 p-3 h-100 d-inline-block">
+        <h1>Products in Database</h1>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Color</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Image1</th>
+                    <th>Image2</th>
+                    <th>Price</th>
+                    <th>Author</th>
+                    <th>Language</th>
+                    <th>Title</th>
+                    <th>Pages</th>
+                    <th>Year</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${allproducts}">
+                    <td th:text="${product.getName()}"> </td>
+                    <td th:text="${product.getColor()}"> </td>
+                    <td th:text="${product.getCategory()}"> </td>
+                    <td th:text="${product.getDescription()}"></td>
+                    <td th:text="${product.getLink1()}"></td>
+                    <td th:text="${product.getLink2()}"></td>
+                    <td th:text="${product.getPrice()}"> </td>
+                    <td th:text="${product.getAuthor()}"></td>
+                    <td th:text="${product.getLanguage()}"></td>
+                    <td th:text="${product.getTitle()}"></td>
+                    <td th:text="${product.getPages()}"> </td>
+                    <td th:text="${product.getYear()}"></td>
+                    <td> <a th:href="@{/removeproduct/{pid}(pid=${product.getId()})}"><button
+                                class="btn btn-danger">Remove</button> </a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="@{/logout}"><button class="btn btn-primary my-2 my-sm-0"> Logout </button></a>
+    </div>
+</body>
+
+</html>

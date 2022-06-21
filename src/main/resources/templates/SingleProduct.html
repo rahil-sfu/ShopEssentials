@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src\main\resources\public\stylesheets\cart.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Cart</title>
+    <style>
+        h1{
+            padding: 5vw;
+        }
+        .container-left{
+            float: left;
+            background-color: black;
+            padding: 22%;
+        }
+        .container-right{
+            float: right;
+            padding-right: 20%;
+            
+        }
+        .small-img img{
+            height: 120px;
+            margin: 10px 0;
+            display: block;
+            opacity: .6;
+        }
+        .small-img img  :hover{
+            opacity:1;
+        }
+        .small-img{
+            float:left;
+        }
+        .product-img{
+            top: 25%;
+            left: 5%;
+            transform: translate (-50%,-50%);
+            position: absolute;
+            
+         }
+
+         .img-holder img{
+             height: 400px;
+
+         }
+         .img-holder{
+             float: right;
+             padding:10px;
+         }
+         h1{
+             padding-top: 2%;
+             padding-left:3%;
+         }
+
+        
+    </style>
+</head>
+<header>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-dark ">
+        <div class="collapse navbar-collapse ">
+            <div class="text-light">
+                <a style="text-decoration: none; color: white;" th:href="@{/explore}">Shopessentials</a>
+            </div>
+        </div>
+        <!-- Search function -->
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <form class="form-inline my-2 my-lg-0" action="#" th:action="@{/search}" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword"
+                        aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">&#x1F50E;</button>
+                </form>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <!-- <button class="btn my-2 my-sm-0">&#x1f464;</button> -->
+                <a th:href="@{/cartPage}"><button class="btn my-2 my-sm-0"> &#x1f6d2; </button></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <a style="color: white; font: italic;" class="btn my-2 my-sm-0" th:text="${product.getUsernameofperson()}"></a>
+                <a th:href="@{/logout}"><button class="btn my-2 my-sm-0"> &#128228; </button></a>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="collapse navbar-collapse">
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/allproductspage/1}">Books</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/2}">Clothing</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/3}">Sports</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/5}">Furniture</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/4}">Stationary</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+     <form action="#" method="POST" th:action="@{/CartPage/{pid}(pid= ${product.getId()})}" th:object="${product}">
+    <div class="container">
+        <h1 th:text="${product.getName()}"></h1>
+        <div >
+            <div class="product-img">
+            <div class="small-img">
+            <img 
+     th:src="${product.getLink1()}" alt="product photo" onclick = "displayImg(this)">
+            <img  
+            th:src="${product.getLink2()}" alt="product photo" onclick = "displayImg(this)">
+        </div>
+        <div class ="img-holder">
+            <img id="imgHolder"
+     th:src="${product.getLink1()}" alt="product photo"  >
+        </div>
+    </div>
+            <div class="container-right">
+                <h2 th:text="${product.getName()}"></h2>
+
+                <!-- <p th:text="${product.getDescription()}"></p> -->
+                <p th:text=" '$' + ${product.getPrice()}"></p>
+    
+                    
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Quantity of Product</label>
+                        <br>
+                         <!-- <input type="number" th:field=*{quantity} placeholder="Quantity" required> -->
+                         <select type="text" th:field=*{quantity} placeholder="Quantity" required> <br>
+                           
+                            <option selected value="1"></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <br>
+                    </div>  
+                </p>
+                 <input type="submit" style=" background-color:black; 
+                                border: none;
+                                color: white;
+                                left:500px;
+                                padding: 15px 32px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                cursor: pointer;" class="button" value="Add to Cart">
+            </div>
+        </div>
+    </div>
+ </form>  
+ <script>
+     function displayImg(sm_Img){
+       var Img = document.getElementById("imgHolder");
+   Img.src = sm_Img.src
+    }
+ </script>
+</body>
+
+
+<footer>
+    <div class="footer-copyright text-center py-3 text-light">
+        © 2020 Copyright Shopessentials
+    </div>
+</footer>
+
+</html>

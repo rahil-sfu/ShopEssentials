@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEssentials</title>
+</head>
+<!-- <link rel="stylesheet" href="./stylesheets/style1.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<header>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-dark ">
+        <div class="collapse navbar-collapse ">
+            <div class="text-light">
+                <a style="text-decoration: none; color: white;" th:href="@{/explore}">Shopessentials</a>
+            </div>
+        </div>
+        <!-- Search function -->
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <form class="form-inline my-2 my-lg-0" action="#" th:action="@{/search}" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword"
+                        aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">&#x1F50E;</button>
+                </form>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <!-- <button class="btn my-2 my-sm-0">&#x1f464;</button> -->
+                <a th:href="@{/cartPage}"><button class="btn my-2 my-sm-0"> &#x1f6d2; </button></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <a style="color: white; font: italic;" class="btn my-2 my-sm-0"
+                    th:text="${allproducts.getUsername()}"></a>
+                <a th:href="@{/logout}"><button class="btn my-2 my-sm-0"> &#128228; </button></a>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="collapse navbar-collapse">
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/allproductspage/1}">Books</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/2}">Clothing</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/3}">Sports</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/5}">Furniture</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/4}">Stationary</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<body>
+    <style>
+        .small-container {
+            max-width: 1080px;
+            margin: auto;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .col-4 {
+            flex-basis: 25%;
+            padding: 10px;
+            min-width: 200px;
+            margin-bottom: 50px;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 20px;
+        }
+
+        body {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 10%, #00906088 90%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 1em;
+        }
+    </style>
+    <form action="#" method="POST" th:action="@{/filter}" th:object="${filter}">
+        <div class="small-container">
+            <br>
+            <div class="input-group mb-3">
+                <h3>Filter:</h3> &nbsp; &nbsp;
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+    
+                <input type="number" th:field="*{min_price}" placeholder="min price" required> &nbsp; &nbsp; 
+                &nbsp;
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input type="number" th:field="*{max_price}" placeholder="max price" required> &nbsp; &nbsp; 
+    
+                <input class="btn btn-success" type="submit" value="submit answer">
+            </div>
+            <h1 th:text="${title}"> </h1>
+            <nav>
+                <ul th:each=" product : ${allproducts.getProduct()}">
+                    <li><img th:src="${product.getLink1()}" width="400 px" height="600px">
+                        <p> <a th:href="@{/singleproduct/{pid}(pid= ${product.getId()})}"
+                                th:text="${product.getName()}"></a></p></span><span
+                            class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span
+                            class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span
+                            class="fa fa-star checked"></span>
+                        <p th:text="${product.getCategory()}"></p>
+                        <p th:text="'$' + ${product.getPrice()}"></p>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </form>
+</body>
+<footer class="page-footer font-small elegant-color bg-dark" id="n1">
+    <div class="footer-copyright text-center py-3 text-light">
+        © 2020 Copyright Shopessentials
+    </div>
+    
+</footer>
+
+</html>

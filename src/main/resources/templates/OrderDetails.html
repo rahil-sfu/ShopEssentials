@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>OrderDetails</title>
+</head>
+<style>
+    #n1{
+   color: black;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center
+ }
+ input[type=text], select {
+        width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#deliver{
+    width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  padding-top: 40px;
+  
+}
+h2
+{
+    padding-top:30px;
+    
+}
+h3{
+    padding-top: 17px;
+    padding-left: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+button{
+    
+    background-color:black; 
+    border: none;
+    color: white;
+    
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#pay1{
+   font-size: x-large;
+   padding-left: 15px;
+
+}
+#pay2{
+    padding-left: 10px;
+}
+p.del1
+{
+    border-style: ridge;
+    width: 70%;
+    height: 50px;
+    padding-left: 20px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+</style>
+<header>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-dark ">
+        <div class="collapse navbar-collapse ">
+            <div class="text-light">
+                <a style="text-decoration: none; color: white;" th:href="@{/explore}">Shopessentials</a>
+            </div>
+        </div>
+        <!-- Search function -->
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <form class="form-inline my-2 my-lg-0" action="#" th:action="@{/search}" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword"
+                        aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">&#x1F50E;</button>
+                </form>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <!-- <button class="btn my-2 my-sm-0">&#x1f464;</button> -->
+                <a th:href="@{cartPage}"><button class="btn my-2 my-sm-0"> &#x1f6d2; </button></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <a style="color: white; font: italic;" class="btn my-2 my-sm-0" th:text="${user}"></a>
+                <a th:href="@{/logout}"><button class="btn my-2 my-sm-0"> &#128228; </button></a>
+                
+            </div>
+        </div>
+        
+        
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="collapse navbar-collapse">
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/allproductspage/1}">Books</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/2}">Clothing</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/3}">Sports</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/5}">Furniture</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/4}">Stationary</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div> 
+       <h3>Thank-you for choosing Shopessentials</h3>
+       <div class="row">
+           <div class="col-md-6" id="box">
+       
+       <p id="deliver"> Delivery Address: <br> </p>
+       <p  class="del1" th:text="${order.getAddress()}"> </p>
+       
+       <p id="deliver"> Delivery Time: <br></p>
+       <p class="del1" th:text="${order.getTime()}"></p>
+       <br> <br> <br> <br>
+       <p>
+           <span id="pay1">Payment Method: CASH On Delivery </span><br> 
+           <span id="pay2">(We are currently not accepting online payments.Sorry for the inconvenience.)</span>
+        </p>
+       </div>
+       
+       <div class="col-md-6"><h2>Summary</h2>
+           <div class="col-md-5">
+         <div>  
+            <p style="float: right;"th:text="${order.getSubtotal()}"></p>  
+       <p> Subtotal &emsp; &emsp; &emsp; &emsp;&emsp; $</p>
+    </div> 
+    <div>
+        <p style="margin:0;display:inline;float: right;"th:text="${order.getTax()}"></p>
+       <p> Tax &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; &emsp;   $</p>
+       
+    </div>
+    <div>
+       <p style="margin:0;display:inline;float: right;"th:text="${order.getCharges()}"></p>
+       <p> Shipping Charges &emsp; &nbsp;&nbsp;$</p>
+       
+    </div>
+    <hr size="4" width="98%" color="black"> 
+    <div>
+   
+    <p style="margin:0;display:inline;float: right;"th:text="${order.getTotalCost()}"></p>   
+    <p> Total Cost &emsp; &emsp; &emsp; &emsp;&nbsp; $</p>
+       
+       
+    </div>
+    <hr size="4" width="98%" color="black"> 
+       <a th:href="@{/homepage}"><button style="float: right;">Return to Home</button></a>
+   </div>
+       </div>
+</div>
+<br>
+
+      
+   </div> 
+  
+</body>
+<footer class="page-footer font-small elegant-color bg-dark" id="n1">
+    <div class="footer-copyright text-center py-3 text-light">
+        © 2020 Copyright Shopessentials
+    </div>
+    
+   
+</footer>
+</html>

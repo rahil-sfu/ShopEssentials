@@ -1,0 +1,108 @@
+h1{
+    padding-top: 0px;
+    padding-left:10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h2{
+    padding-top:0px;  
+}
+h4{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+form {
+    margin: 0 auto; 
+}
+.shipping{
+    
+    padding-left: 200px;
+}
+
+input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 0px;
+    box-sizing: border-box;
+}
+
+
+input[type=email], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid gray;
+    
+    box-sizing: border-box;
+}
+
+
+input[type=tel], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid gray;
+  
+    box-sizing: border-box;
+}
+
+
+input[type=zip], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid gray;
+    
+    box-sizing: border-box;
+}
+#line1{
+    width:62.9%
+}
+#line2{
+    width:62.9%
+}
+.button {
+    background-color:black; 
+    border: none;
+    color: white;
+    left:500px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .box{
+      width: 300px;
+      border:1px solid grey;
+      padding-top: 10px;
+      padding: 20px;
+      margin-top: 120px;
+     
+  }
+  .box1{
+      width: 650px;
+      border:1px solid grey;
+      margin-left: 130px;;
+      margin-top: 60px;
+      background-color:  rgb(199, 196, 196);  
+  }
+  .shipment{
+      border: 1px solid grey;
+      width: 80%;
+      padding: 10px;
+  }
+  .n1{
+     
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+ text-align: center
+}

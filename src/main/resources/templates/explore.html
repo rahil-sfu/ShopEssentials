@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEssentials</title>
+    <link rel="stylesheet" href="./stylesheets/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<header>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-dark ">
+        <div class="collapse navbar-collapse ">
+            <div class="text-light">
+                <a style="text-decoration: none; color: white;" th:href="@{/explore}">Shopessentials</a>
+            </div>
+        </div>
+        <!-- Search function -->
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <form class="form-inline my-2 my-lg-0" action="#" th:action="@{/search}" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword"
+                        aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">&#x1F50E;</button>
+                </form>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <!-- <button class="btn my-2 my-sm-0">&#x1f464;</button> -->
+                <a th:href="@{/Orders}"><button style="color: white;" class="btn my-2 my-sm-0"> Orders </button></a>
+            </div>
+
+        <div class="navbar-nav">
+            <div>
+                <!-- <button class="btn my-2 my-sm-0">&#x1f464;</button> -->
+                <a th:href="@{/cartPage}"><button class="btn my-2 my-sm-0"> &#x1f6d2; </button></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <a style="color: white; font: italic;" class="btn my-2 my-sm-0" th:text="${name}"></a>
+                <a th:href="@{/logout}"><button class="btn my-2 my-sm-0"> &#128228; </button></a>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="collapse navbar-collapse">
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/allproductspage/1}">Books</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/2}">Clothing</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/3}">Sports</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/5}">Furniture</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/4}">Stationary</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body style="background-color: antiquewhite;">
+    <div class="image">
+        <nav>
+            <ul>
+                <li><img src="https://shopessentials.s3.filebase.com/pexels-sofia-alejandra-3007370.jpg" width="350 px"
+                        height="400px">
+                    <p> <a style="text-decoration: none;" th:href="@{/allproductspage/1}" class="category">BOOKS &#8594;</a></p>
+                </li>
+                <li><img src="https://shopessentials.s3.filebase.com/clothes.jpg" width="350 px" height="400px">
+                    <p> <a style="text-decoration: none;" th:href="@{/allproductspage/2}" class="category">CLOTHES &#8594;</a></p>
+                </li>
+                <li><img src="https://shopessentials.s3.filebase.com/sports.jpg" width="350 px" height="400px">
+                    <p> <a style="text-decoration: none;" th:href="@{/allproductspage/3}" class="category">SPORTS &#8594;</a></p>
+                </li>
+                <li><img src="https://shopessentials.s3.filebase.com/stationery.jpg" width="350 px" height="400px">
+                    <p> <a style="text-decoration: none;" th:href="@{/allproductspage/4}" class="category">STATIONERY &#8594;</a></p>
+                </li>
+                <li><img src="https://shopessentials.s3.filebase.com/furniture.jpg" width="350 px" height="400px">
+                    <p> <a style="text-decoration: none;" th:href="@{/allproductspage/5}" class="category">FURNITURE &#8594;</a></p>
+                </li>
+                <li><img src="https://shopessentials.s3.filebase.com/Step 3 of 4_ Edit Your Logo _ LogoMaker and 3 more pages - Personal - Microsoft​ Edge 2021-06-23 9_54_00 PM.png "
+                        width="350 px" height="400px">
+                    <p> <a style="text-decoration: none;" th:href="@{/allproductspage/6}" class="category">All Products &#8594;</a></p>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+<footer class="page-footer font-small elegant-color bg-dark">
+
+    <div class="footer-copyright text-center py-3 text-light">
+        © 2020 Copyright Shopessentials
+    </div>
+</footer>
+
+</html>

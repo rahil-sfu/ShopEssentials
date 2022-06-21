@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+</head>
+<style>
+    html,body{
+        background: url('https://shopessentials.s3.filebase.com/2022181.jpg') no-repeat center fixed;
+        background-size: cover;
+    }
+</style>
+<body>
+    <h1 style=" font-style: italic; color: white; ">ERROR!</h1>
+    <p  style=" font-style: italic; color: white; " th:text= "${message}"> </p>
+    <br>
+    <br> 
+    <a th:href="@{/}" style="color: white;">Go Back To Login Page</a> <br> <br> 
+    <a th:href="@{/register}" style="color: white;">Go Back To Registeration Page</a> <br> <br> 
+    <a th:href="@{/forgotpassword}" style="color: white;">Go Back To Forgot password Page</a> <br> <br> 
+</body>
+</html>

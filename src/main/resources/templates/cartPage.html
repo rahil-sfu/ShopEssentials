@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src\main\resources\public\stylesheets\cart.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Cart</title>
+</head>
+<style>
+    #n1{
+   color: black;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center
+    }
+   #remove{
+       font-size: small;
+       text-decoration: underline;
+}
+.table td{
+    padding-right: 0 15px ;
+}
+
+ 
+</style>
+<header>
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-dark ">
+        <div class="collapse navbar-collapse ">
+            <div class="text-light">
+                <a style="text-decoration: none; color: white;" th:href="@{/explore}">Shopessentials</a>
+            </div>
+        </div>
+        <!-- Search function -->
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <form class="form-inline my-2 my-lg-0" action="#" th:action="@{/search}" method="POST">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" name="keyword"
+                        aria-label="Search">
+                    <button class="btn my-2 my-sm-0" type="submit">&#x1F50E;</button>
+                </form>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <!-- <button class="btn my-2 my-sm-0">&#x1f464;</button> -->
+                <a th:href="@{cartPage}"><button class="btn my-2 my-sm-0"> &#x1f6d2; </button></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div>
+                <a style="color: white; font: italic;" class="btn my-2 my-sm-0" th:text="${products.getUsername()}"></a>
+                <a th:href="@{/logout}"><button class="btn my-2 my-sm-0"> &#128228; </button></a>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-md navbar-light bg-light ">
+        <div class="collapse navbar-collapse">
+        </div>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/allproductspage/1}">Books</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/2}">Clothing</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/3}">Sports</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/5}">Furniture</a>
+                <a class="nav-item nav-link" th:href="@{/allproductspage/4}">Stationary</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body >
+    <main style="padding: 50px;">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>My Bag</h1>
+            <br>
+            <table class="table">
+                <tr> 
+                    <th></th>
+                    <th>Product Name</th> 
+                    <th>PRICE</th> 
+                    <th>Quantity</th>
+                </tr>
+                 <tr th:each=" data: ${products.getProduct()}" > 
+                    <th>  <image style="width: 40%; height: 100px;" th:src="${data.getLink1()}"></image> </th> 
+                    <th> <a th:href="@{/singleproduct/{pid}(pid= ${data.getId()})}"><span th:text= "${data.getName()}"></span></a></th>
+                    <th id="price2" th:text=" ${data.getPrice()}"></th>
+                     <th id="qty" th:text="${data.getQuantity()}"></th>
+                      <th id="remove"> <a th:href="@{/removeCart/{pid}(pid= ${data.getId()})}" style="color: grey;">REMOVE</a></th></tr>
+            </table> 
+        </div>  
+<div class="col-md-6" ><h2>Summary</h2>
+    <div class="col-md-5">
+    <p>Subtotal
+        &emsp; &emsp; &emsp; &emsp; $ <span id="subtotal"></span>
+    </p>
+    <p>Estimated Tax
+        &emsp; &emsp;   $ <span id="est"></span>
+    </p>
+    <p>Discounts
+        &emsp; &emsp; &emsp; &nbsp;  $ <span id="dis"></span>
+    </p>
+    <hr size="4" width="90%" color="black"> 
+    <p>Total
+        &emsp; &emsp; &emsp; &emsp; &ensp;&ensp;  $ <span id="total"></span>
+    </p>
+    <hr size="4" width="90%" color="black"> 
+    <br>
+    <button style=" background-color:black; 
+    border: none;
+    color: white;
+    left:500px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;" class="button" onclick="location.href= 'info' ">Proceed</button>
+    </div>
+    
+</div>
+
+</div>
+<script>
+
+
+    function cartsubTotal(){
+        const total=[];
+        const qty1=[];
+        const items=document.querySelectorAll("#price2");
+        const quantity=document.querySelectorAll("#qty");
+        items.forEach(function(item){
+            total.push(parseFloat(item.textContent));
+           
+         });
+         quantity.forEach(function(quan){
+            qty1.push(parseFloat(quan.textContent));
+           
+         });
+         console.log(qty1);
+        console.log(total);
+        
+        let sum=0;
+    for(var i=0;i<total.length;i++)
+        sum += total[i]*qty1[i];
+       
+       console.log(sum);
+       document.getElementById('subtotal').textContent=sum;
+       return sum;
+    }
+    cartsubTotal();
+    function getTax (){
+      var tax=cartsubTotal();
+        var est = parseFloat(0.12*tax);
+        console.log(est);
+        document.getElementById('est').textContent=est.toFixed(2);
+        document.getElementById('dis').textContent=0.00;
+        return est;
+    
+    }
+    function cartTotal(){
+        var t1 = cartsubTotal() 
+        var t2 = getTax();
+        var tFinal = parseFloat(t1+t2);
+        console.log(tFinal);
+        document.getElementById('total').textContent=tFinal.toFixed(2);
+    }
+    getTax();
+    cartTotal();
+        </script>
+    
+</body>
+
+
+<footer class="page-footer font-small elegant-color bg-dark" id="n1">
+    <div class="footer-copyright text-center py-3 text-light">
+        © 2020 Copyright Shopessentials
+    </div>
+    
+</footer>
+
+
+</html>
